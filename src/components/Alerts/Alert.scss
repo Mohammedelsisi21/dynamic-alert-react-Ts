@@ -1,0 +1,77 @@
+$defaultBg: rgb(29 31 32 / 71%);
+$defaultColor: #c8c8c8;
+$defaultBorder: #c8c8c8;
+
+$infoBg: rgb(100 108 255 / 8%);
+$infoColor: #bcc0ff;
+$infoBorder: #646cff;
+
+$errorBg: rgb(192 29 29 / 15%);
+$errorColor: #ef8d8dfa;
+$errorBorder: rgb(255, 25 , 0 , 0.322);
+
+$waringBg: rgb(255 197 23 / 5%);
+$waringColor: #fcd253;
+$waringBorder: rgb(255, 213, 0, 0.793);
+
+$successBg: rgb(246, 238, 9, 0.127);
+$successColor: #7acf58d6;
+$successBorder: rgb(0,255,0,0.322);
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 600px;
+    margin: 50px auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+
+
+@mixin Alert($name, $backGround, $color, $borderColor) {
+        .alert-#{$name} {
+    background-color: $backGround;
+    border-radius: .8rem;
+    border: 2px dotted $borderColor;
+    color: $color;
+    padding: 1.2rem;
+    .alert-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: .5rem;
+        svg {
+            cursor: pointer;
+        }
+        div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            span {
+                margin-right: .5rem;
+                svg {
+                    cursor: default;
+                }
+            }
+            .title {
+                text-transform: capitalize;
+                font-weight: bold;
+            }
+        }
+    }
+    .description {
+        font-size: .9rem;
+        line-height: 1.4;
+        text-transform: lowercase;
+    }
+    }
+}
+
+
+@include Alert(default ,$defaultBg, $defaultColor, $defaultBorder);
+@include Alert(info ,$infoBg, $infoColor, $infoBorder);
+@include Alert(error ,$errorBg, $errorColor, $errorBorder );
+@include Alert(warning ,$waringBg, $waringColor, $waringBorder );
+@include Alert(success ,$successBg, $successColor, $successBorder);
